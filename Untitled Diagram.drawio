@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-06T15:05:18.392Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="yknKwvwcwaQjTbPoe1Fx" version="13.10.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-06T15:06:29.856Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="0kh2UeRn43VnqEX4vdUQ" version="13.10.9" type="github">
   <diagram id="FgQy-jYIGedmmrOs4y-3" name="Page-1">
     <mxGraphModel dx="1826" dy="701" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -227,10 +227,13 @@
         <mxCell id="NGg-V4E_7E0HNPcvB8aK-74" value="Name" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="489" y="57" width="160" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="OxyErdk4MwNBfT1_B111-1" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NGg-V4E_7E0HNPcvB8aK-76" target="NGg-V4E_7E0HNPcvB8aK-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="NGg-V4E_7E0HNPcvB8aK-76" value="Verfügbarkeit" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="489" y="92" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="NGg-V4E_7E0HNPcvB8aK-77" value="Marktag" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="NGg-V4E_7E0HNPcvB8aK-77" value="Markttag" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="489" y="127" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="NGg-V4E_7E0HNPcvB8aK-78" value="" style="endArrow=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="NGg-V4E_7E0HNPcvB8aK-26" target="NGg-V4E_7E0HNPcvB8aK-71" edge="1">
