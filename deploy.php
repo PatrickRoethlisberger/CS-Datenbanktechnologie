@@ -40,6 +40,7 @@ host(getenv('DEPLOY_HOSTNAME')) // Name of the server
     ->hostname(getenv('DEPLOY_HOSTNAME')) // Hostname or IP address
     ->stage('production') // Deployment stage (production, staging, etc)
     ->user('dep') // SSH user
+    ->port(2222) // SSH port
     ->set('deploy_path', getenv('DEPLOY_PATH')); // Deploy path
 
 after('deploy:failed', 'deploy:unlock'); // Unlock after failed deploy
