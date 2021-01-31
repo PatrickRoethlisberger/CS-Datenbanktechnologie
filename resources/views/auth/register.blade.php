@@ -12,37 +12,67 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus/>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Passwort')" />
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('Passwort bestätigen')" />
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
+            </div>
+
+            <!-- Firstname -->
+            <div class="mt-4">
+                <x-label for="firstname" :value="__('Vorname')" />
+
+                <x-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required />
+            </div class="mt-4">
+
+            <!-- Lastname -->
+            <div class="mt-4">
+                <x-label for="lastname" :value="__('Namname')" />
+
+                <x-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required  />
+            </div>
+
+            <!-- Streetname -->
+            <div class="mt-4">
+                <x-label for="streetname" :value="__('Strasse')" />
+
+                <x-input id="streetname" class="block mt-1 w-full" type="text" name="streetname" :value="old('streetname')" required  />
+            </div>
+
+            <!-- Streetnumber -->
+            <div class="mt-4">
+                <x-label for="streetnumber" :value="__('Hausnummer')" />
+
+                <x-input id="streetnumber" class="block mt-1 w-full" type="text" name="streetnumber" :value="old('streetname')" required  />
+            </div>
+
+            <!-- PLZ -->
+            <div class="mt-4">
+                <x-label for="plz" :value="__('PLZ')" />
+
+                <x-input id="plz" class="block mt-1 w-full" type="text" name="plz" :value="old('plz')" required  />
+            </div>
+
+            <!-- City -->
+            <div class="mt-4">
+                <x-label for="city" :value="__('Stadt')" />
+
+                <x-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required  />
             </div>
 
             <div class="flex items-center justify-end mt-4">
