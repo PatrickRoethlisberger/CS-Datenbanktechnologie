@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Plan;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class PlanSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class PlanSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('plans')->insert([
+        Plan::insert([
             [
                 'name' => 'Bewerbungsphase',
                 'description' => 'Um ein vollwertiges Mitglied werden zu können muss zuerst die zweiwöchige Bewerbungsphase abgeschlossen werden.',
@@ -22,8 +22,6 @@ class PlanSeeder extends Seeder
                 'duration' => 2,
                 'lots' => 1,
                 'isInitialPlan' => true,
-                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             ],
             [
                 'name' => 'Standard halbjährlich',
@@ -32,8 +30,6 @@ class PlanSeeder extends Seeder
                 'duration' => 6,
                 'lots' => 1,
                 'isInitialPlan' => false,
-                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             ],
             [
                 'name' => 'Standard jährlich',
@@ -42,8 +38,6 @@ class PlanSeeder extends Seeder
                 'duration' => 12,
                 'lots' => 1,
                 'isInitialPlan' => false,
-                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             ],
             [
                 'name' => 'Pro halbjährlich',
@@ -52,8 +46,6 @@ class PlanSeeder extends Seeder
                 'duration' => 6,
                 'lots' => 1,
                 'isInitialPlan' => false,
-                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             ],
         ]);
     }
