@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Subscription extends Model
 {
     use HasFactory;
 
@@ -15,16 +15,19 @@ class Plan extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'duration',
-        'lots',
-        'isInitalPlan',
+        'user_id',
+        'plan_id',
+        'valid_until',
+        'suspended_until',
     ];
 
-    public function subscriptions()
+    public function user()
     {
-        return $this->hasMany(Subscription::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 }

@@ -48,4 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class);
+    }
+
+    public function plan()
+    {
+        return $this->hasOneThrough(Plan::class, Subscription::class);
+    }
 }
