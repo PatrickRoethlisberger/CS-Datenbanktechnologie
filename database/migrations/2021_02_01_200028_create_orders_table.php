@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('subscription_id')->onDelete('cascade');
+            $table->foreignId('subscription_id')->constrained()->onDelete('cascade');
             $table->string('billing_number', 32);
             $table->timestamp('paid_at')->nullable();
             $table->timestamps();
