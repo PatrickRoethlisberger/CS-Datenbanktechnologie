@@ -13,6 +13,17 @@ class Order extends Model
         'id'
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'billing_from' => 'datetime',
+        'billing_until' => 'datetime',
+        'paid_at' => 'datetime',
+    ];
+
     public function subscription()
     {
         return $this->belongsTo(Subscription::class);

@@ -13,6 +13,16 @@ class Subscription extends Model
         'id'
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'valid_until' => 'datetime',
+        'banned_until' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

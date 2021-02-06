@@ -13,6 +13,15 @@ class Audit extends Model
         'id'
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
     public function auditor()
     {
         return $this->belongsTo(User::class, 'auditor_user_id', 'id');
