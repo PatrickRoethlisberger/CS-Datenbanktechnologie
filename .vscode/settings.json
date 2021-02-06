@@ -1,0 +1,14 @@
+{
+    "emmet.includeLanguages": {
+      "blade": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.includeLanguages": {
+      "vue": "html",
+      "plaintext": "html",
+      "php": "html",
+      "blade": "html"
+    },
+    "tailwindCSS.colorDecorators": "on",
+    "editor.formatOnSave": false
+}
