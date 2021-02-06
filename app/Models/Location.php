@@ -9,21 +9,8 @@ class Location extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'provider_user_id',
-        'description',
-        'streetname',
-        'streetnumber',
-        'plz',
-        'city',
-        'IBAN',
-        'checks',
-        'roles'
+    protected $guarded = [
+        'id'
     ];
 
     public function provider()

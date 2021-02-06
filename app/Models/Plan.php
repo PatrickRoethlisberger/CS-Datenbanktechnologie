@@ -9,18 +9,8 @@ class Plan extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'duration',
-        'lots',
-        'isInitalPlan',
+    protected $guarded = [
+        'id'
     ];
 
     public function subscriptions()

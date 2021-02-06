@@ -9,16 +9,8 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'user_id',
-        'plan_id',
-        'valid_until',
-        'suspended_until',
+    protected $guarded = [
+        'id'
     ];
 
     public function user()

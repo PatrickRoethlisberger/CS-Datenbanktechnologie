@@ -9,14 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'billing_number',
-        'paid_at',
+    protected $guarded = [
+        'id'
     ];
 
     public function subscription()
