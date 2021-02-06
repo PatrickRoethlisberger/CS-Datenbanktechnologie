@@ -59,6 +59,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Location::class);
     }
 
+    public function plan()
+    {
+        return $this->hasOneThrough(Plan::class, Subscription::class, 'user_id', 'id', 'id', 'plan_id');
+    }
+
     public function occupations()
     {
         return $this->hasMany(Occupation::class);
