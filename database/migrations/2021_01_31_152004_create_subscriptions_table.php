@@ -17,8 +17,8 @@ class CreateSubscriptionsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('plan_id');
-            $table->timestamp('valid_until')->nullable();
-            $table->timestamp('suspended_until')->nullable();
+            $table->date('valid_until')->nullable();
+            $table->date('suspended_until')->nullable();
             $table->timestamps();
         });
     }
