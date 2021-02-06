@@ -30,4 +30,9 @@ class Location extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function occupations()
+    {
+        return $this->hasMany(Occupation::class);
+    }
 }
