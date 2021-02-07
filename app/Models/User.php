@@ -34,6 +34,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get the user's display name
+     * If available return the company name otherwise first and lastname
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->companyname ? "{$this->companyname}" : "{$this->firstname} {$this->lastname}";
+    }
+
     public function subscription()
     {
         return $this->hasOne(Subscription::class);
