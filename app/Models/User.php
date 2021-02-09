@@ -44,19 +44,24 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->companyname ? "{$this->companyname}" : "{$this->firstname} {$this->lastname}";
     }
 
-    public function subscription()
+    public function orders()
     {
-        return $this->hasOne(Subscription::class);
+        return $this->hasMany(Order::class);
+    }
+
+    public function currentOrder()
+    {
+        return $this->hasOne(Order::class, 'id', 'current_order_id');
+    }
+
+    public function plan()
+    {
+        return $this->hasOneThrough(Plan::class, Order::class, 'user_id', 'id', 'current_order_id', 'plan_id');
     }
 
     public function locations()
     {
         return $this->hasMany(Location::class);
-    }
-
-    public function plan()
-    {
-        return $this->hasOneThrough(Plan::class, Subscription::class, 'user_id', 'id', 'id', 'plan_id');
     }
 
     public function occupations()

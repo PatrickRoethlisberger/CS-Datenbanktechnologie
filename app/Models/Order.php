@@ -24,8 +24,8 @@ class Order extends Model
         'paid_at' => 'datetime',
     ];
 
-    public function subscription()
+    public function user()
     {
-        return $this->belongsTo(Subscription::class);
+        return $this->belongsTo(User::class);
     }
 }

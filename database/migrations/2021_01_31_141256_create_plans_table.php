@@ -22,6 +22,7 @@ class CreatePlansTable extends Migration
             $table->tinyInteger('duration');
             $table->tinyInteger('lots');
             $table->boolean('isInitialPlan');
+            $table->boolean('isBanningPlan');
             $table->timestamps();
         });
 

@@ -13,8 +13,8 @@ class Plan extends Model
         'id'
     ];
 
-    public function subscriptions()
+    public function orders()
     {
-        return $this->hasMany(Subscription::class);
+        return $this->hasMany(Order::class);
     }
 }

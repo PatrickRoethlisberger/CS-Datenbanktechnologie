@@ -22,6 +22,7 @@ class PlanSeeder extends Seeder
                 'duration' => 2,
                 'lots' => 1,
                 'isInitialPlan' => true,
+                'isBanningPlan' => false,
             ],
             [
                 'name' => 'Standard halbjährlich',
@@ -30,6 +31,7 @@ class PlanSeeder extends Seeder
                 'duration' => 6,
                 'lots' => 1,
                 'isInitialPlan' => false,
+                'isBanningPlan' => false,
             ],
             [
                 'name' => 'Standard jährlich',
@@ -38,6 +40,7 @@ class PlanSeeder extends Seeder
                 'duration' => 12,
                 'lots' => 1,
                 'isInitialPlan' => false,
+                'isBanningPlan' => false,
             ],
             [
                 'name' => 'Pro halbjährlich',
@@ -46,6 +49,16 @@ class PlanSeeder extends Seeder
                 'duration' => 6,
                 'lots' => 1,
                 'isInitialPlan' => false,
+                'isBanningPlan' => false,
+            ],
+            [
+                'name' => 'Verstoss gegen die Richtlinien',
+                'description' => 'Aufgrund eines Verstosses gegen unsere Richtlinien musste Ihr Vertrag für drei Monate unterbrochen werden.',
+                'price' => 0,
+                'duration' => 3,
+                'lots' => 0,
+                'isInitialPlan' => false,
+                'isBanningPlan' => true,
             ],
         ]);
     }
