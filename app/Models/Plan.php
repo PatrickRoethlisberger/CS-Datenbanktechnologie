@@ -13,6 +13,19 @@ class Plan extends Model
         'id'
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'price' => 'float',
+        'duration' => 'integer',
+        'lots' => 'integer',
+        'isInitialPlan' => 'boolean',
+        'isBanningPlan' => 'boolean',
+    ];
+
     public function orders()
     {
         return $this->hasMany(Order::class);
