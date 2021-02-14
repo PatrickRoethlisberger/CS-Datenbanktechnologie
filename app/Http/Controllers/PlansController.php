@@ -10,8 +10,8 @@ class PlansController extends Controller
     public function index()
     {
         return view('plans')->with([
-            'initialPlans' => Plan::where([['isInitialPlan', true],['isBanningPlan', false]])->get(),
-            'Plans' => Plan::where([['isInitialPlan', false],['isBanningPlan', false]])->get(),
+            'initialPlans' => Plan::where([['isInitialPlan', true],['isTerminatingPlan', false]])->get(),
+            'Plans' => Plan::where([['isInitialPlan', false],['isTerminatingPlan', false]])->get(),
         ]);
     }
 }

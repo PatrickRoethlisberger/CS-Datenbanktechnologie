@@ -23,7 +23,7 @@ class Plan extends Model
         'duration' => 'integer',
         'lots' => 'integer',
         'isInitialPlan' => 'boolean',
-        'isBanningPlan' => 'boolean',
+        'isTerminatingPlan' => 'boolean',
     ];
 
     public function orders()
