@@ -57,7 +57,7 @@
             <!-- Streetnumber -->
             <div class="mt-4">
                 <x-label for="streetnumber" :value="__('Hausnummer *')" />
-                <x-input id="streetnumber" class="block mt-1 w-full" type="text" name="streetnumber" :value="old('streetname')" required  />
+                <x-input id="streetnumber" class="block mt-1 w-full" type="text" name="streetnumber" :value="old('streetnumber')" required  />
             </div>
 
             <!-- PLZ -->
