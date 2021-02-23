@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlanController;
 use App\Models\Plan;
@@ -28,6 +29,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/orders', OrderController::class)->only(['index','store']);
     Route::get('/orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
+    Route::resource('/locations', LocationController::class)->only(['index','store','create']);
 });
 
 require __DIR__.'/auth.php';
