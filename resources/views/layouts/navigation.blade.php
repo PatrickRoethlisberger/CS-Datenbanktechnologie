@@ -20,6 +20,11 @@
                     <x-nav-link :href="route('plans')" :active="request()->routeIs('plans')">
                         Abos
                     </x-nav-link>
+                    @auth
+                        <x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
+                            Standorte
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -40,6 +45,10 @@
                         </x-slot>
 
                         <x-slot name="content">
+                            <x-dropdown-link :href="route('orders.index')">
+                                Meine Bestellungen
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -86,6 +95,11 @@
             <x-responsive-nav-link :href="route('plans')" :active="request()->routeIs('plans')">
                 Abos
             </x-responsive-nav-link>
+            @auth
+                <x-responsive-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
+                    Standorte
+                </x-responsive-nav-link>
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
@@ -104,9 +118,13 @@
                     </div>
                 </div>
             @endauth
-            <div class="mt-3 space-y-1">
+            <div class="mt-4 space-y-1">
                 <!-- Authentication -->
                 @auth
+                    <x-responsive-nav-link  :href="route('orders.index')">
+                        Meine Bestellungen
+                    </x-responsive-nav-link >
+
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
@@ -116,6 +134,7 @@
                             Logout
                         </x-responsive-nav-link>
                     </form>
+
                 @else
                     <x-responsive-nav-link href="{{ route('login') }}">Login</x-responsive-nav-link>
 
