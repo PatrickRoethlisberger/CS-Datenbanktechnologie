@@ -97,6 +97,7 @@ class OrderController extends Controller
                 'from' => $fromDate,
                 'until' => $fromDate->copy()->addMonths($plan->duration),
             ]);
+            return redirect(route('orders.index'));
         } else {
             return redirect(route('orders.create', $plan))
             ->withErrors('Ein Fehler ist Aufgetreten.');
