@@ -39,7 +39,7 @@
                     {{ $orders->links() }}
                     @else
                     <p>Bis jetzt wurden noch keine Abonomente getätigt.</p>
-                    <x-button-link class="mt-3" :href="route('plans')">
+                    <x-button-link class="mt-4" :href="route('plans')">
                         Jetzt Abonoment abschliessen
                     </x-button-link>
                     @endif

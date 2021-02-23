@@ -41,7 +41,7 @@
                 </div>
 
                 <!-- From -->
-                <div class="mt-3">
+                <div class="mt-4">
                     <x-label for="from" :value="__('Gültig ab')" />
 
                     <x-input id="from" class="block mt-1 w-full"
@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- Until -->
-                <div class="mt-3">
+                <div class="mt-4">
                     <x-label for="until" :value="__('Gültig bis')" />
 
                     <x-input id="until" class="block mt-1 w-full"
@@ -65,7 +65,7 @@
                 </div>
 
                 <!-- Price -->
-                <div class="mt-3">
+                <div class="mt-4">
                     <x-label for="price" :value="__('Preis')" />
 
                     <x-input id="price" class="block mt-1 w-full"
@@ -77,7 +77,7 @@
                 </div>
 
                 <!-- Card -->
-                <div class="mt-3">
+                <div class="mt-4">
                     <x-label for="card" :value="__('Kreditkarten Nummer (optional)')" />
 
                     <x-input id="card" class="block mt-1 w-full"
@@ -93,7 +93,7 @@
             </form>
         @else
             <p>Aktuell ist es nicht möglich ein Abo abzuschliessen.</p>
-            <p class="mt-3"> Falls Sie noch in der Bewerbungsphase sind, können Sie am letzen Tag des Abonoments das Abonoment erneuern</p>
+            <p class="mt-4"> Falls Sie noch in der Bewerbungsphase sind, können Sie am letzen Tag des Abonoments das Abonoment erneuern</p>
             <div class="flex justify-end mt-4">
                 <x-button-link :href="route('dashboard')">
                     Zurück zum Dashboard
