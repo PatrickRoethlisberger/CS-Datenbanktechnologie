@@ -19,13 +19,18 @@ class Order extends Model
      * @var array
      */
     protected $casts = [
-        'billing_from' => 'datetime',
-        'billing_until' => 'datetime',
+        'from' => 'datetime',
+        'until' => 'datetime',
         'paid_at' => 'datetime',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 }

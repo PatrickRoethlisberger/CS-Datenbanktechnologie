@@ -32,6 +32,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'roles' => 'collection',
+        'checks' => 'collection',
     ];
 
     /**
@@ -49,9 +51,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class);
     }
 
+    public function lastOrder()
+    {
+        return $this->orders()->latest()->first();
+    }
+
     public function currentOrder()
     {
-        return $this->hasOne(Order::class, 'id', 'current_order_id');
+        return $this->orders()->where('from', '<=', now())->where('until', '>=', now())->orderby('until', 'desc')->first();
     }
 
     public function plan()

@@ -14,20 +14,21 @@
                         <p>Um die Qualität der Marktfahrer sicherzustellen verlangen wir von allen Makrtfahrern die Absolvierung einer Bewerbungsphase.</p>
                         <div class="container pt-4 mx-auto lg:px-6">
                             <div class="flex flex-wrap ">
-                                @foreach ($initialPlans as $initialPlan)
+                                @foreach ($initialPlans as $plan)
                                     <div class="px-4 py-6 mx-auto lg:px-6 lg:w-1/3 md:w-full">
                                         <div class="h-full px-4 py-6 border rounded-xl">
-                                            <h4 class="tracking-widest">{{ $initialPlan->name }}</h3>
+                                            <h4 class="tracking-widest">{{ $plan->name }}</h3>
                                             <h3
                                                 class="flex items-center justify-start mt-2 mb-4 text-3xl font-bold leading-none text-left text-blue-800 lg:text-4xl">
-                                                CHF {{ $initialPlan->price }}
-                                                <span class="ml-1 text-base text-gray-600">/{{ $initialPlan->duration }} mo</span>
+                                                CHF {{ $plan->price }}
+                                                <span class="ml-1 text-base text-gray-600">/{{ $plan->duration }} mo</span>
                                             </h3>
-                                            <p class="mb-4 text-base leading-relaxed">{{ $initialPlan->description }}</p>
-                                            <button
-                                                class="items-end w-full px-8 py-2 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg shadow-xl hover:text-white focus:shadow-outline focus:outline-none hover:bg-black hoveer:border-black">
-                                                Action
-                                            </button>
+                                            <p class="mb-4 text-base leading-relaxed">{{ $plan->description }}</p>
+                                            @can('create-trial-order')
+                                                <x-button-link :href="route('orders.create', $plan)">
+                                                    Jetzt abschliessen
+                                                </x-button-link>
+                                            @endcan
                                         </div>
                                     </div>
                                  @endforeach
@@ -36,20 +37,23 @@
                         <h2 class="mt-8 text-xl font-bold leading-none text-left lg:text-3xl">Abonomente nach der Bewerbungsphase</h2>
                         <div class="container pt-4 mx-auto lg:px-6">
                             <div class="flex flex-wrap">
-                                @foreach ($Plans as $Plan)
+                                @foreach ($plans as $plan)
                                     <div class="px-4 py-6 mx-auto lg:px-6 lg:w-1/3 md:w-full">
                                         <div class="h-full px-4 py-6 border rounded-xl">
-                                            <h4 class="tracking-widest">{{ $Plan->name }}</h3>
+                                            <h4 class="tracking-widest">{{ $plan->name }}</h3>
                                             <h3
                                                 class="flex items-center justify-start mt-2 mb-4 text-3xl font-bold leading-none text-left text-blue-800 lg:text-4xl">
-                                                CHF {{ $Plan->price }}
-                                                <span class="ml-1 text-base text-gray-600">/{{ $Plan->duration }} mo</span>
+                                                CHF {{ $plan->price }}
+                                                <span class="ml-1 text-base text-gray-600">/{{ $plan->duration }} mo</span>
                                             </h3>
-                                            <p class="mb-4 text-base leading-relaxed">{{ $Plan->description }}</p>
-                                            <button
-                                                class="items-end w-full px-8 py-2 font-semibold text-black transition duration-500 ease-in-out transform bg-white border rounded-lg shadow-xl hover:text-white focus:shadow-outline focus:outline-none hover:bg-black hoveer:border-black">
-                                                Action
-                                            </button>
+                                            <p class="mb-4 text-base leading-relaxed">{{ $plan->description }}</p>
+                                            @can('create-order')
+                                                @can('create-full-order')
+                                                    <x-button-link :href="route('orders.create', $plan)">
+                                                        Jetzt abschliessen
+                                                    </x-button-link>
+                                                @endcan
+                                            @endcan
                                         </div>
                                     </div>
                                  @endforeach

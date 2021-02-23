@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PlansController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PlanController;
+use App\Models\Plan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +21,13 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/plans', [PlansController::class, 'index'])->name('plans');
+Route::get('/plans', [PlanController::class, 'index'])->name('plans');
 
 // Authenticated and verified routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/orders', OrderController::class)->only(['index','store']);
+    Route::get('/orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
 });
 
 require __DIR__.'/auth.php';
