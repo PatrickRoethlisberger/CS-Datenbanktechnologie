@@ -135,3 +135,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Debugbar
+storage/debugbar/
