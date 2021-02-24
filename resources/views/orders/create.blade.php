@@ -11,7 +11,7 @@
         </h1>
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <x-validation-errors class="mb-4" :errors="$errors" />
 
         @if ($fromDate)
 
