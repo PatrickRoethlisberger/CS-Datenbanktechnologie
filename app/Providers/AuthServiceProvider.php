@@ -28,6 +28,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        /**
+         * Check policies
+         */
+
+         Gate::define('create-application', function(User $user) {
+             return $user->checks == null
+                ? Response::allow()
+                : Response::deny();
+         });
+
+        /**
+         * Order policies
+         */
+
         Gate::define('create-order', function(User $user) {
             return empty(! $user->roles)
                 ?   ( $user->roles->contains("validated")
@@ -53,7 +67,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->lastOrder()
                 ?   ( $user->lastOrder()->plan()->first()->isTerminatingPlan
                     ? Response::deny()
-                    :  ( $user->lastOrder()->until <= Carbon::now()
+                    :  (  !($user->lastOrder()->plan()->first()->isInitialPlan) || $user->lastOrder()->until <= Carbon::now()
                         ? Response::allow()
                         : Response::deny()
                         // ToDo: Check for Audits
