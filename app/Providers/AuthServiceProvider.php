@@ -32,11 +32,20 @@ class AuthServiceProvider extends ServiceProvider
          * Check policies
          */
 
-         Gate::define('create-application', function(User $user) {
-             return $user->checks == null
-                ? Response::allow()
+        Gate::define('create-application', function(User $user) {
+            return $user->checks == null
+            ? Response::allow()
+            : Response::deny();
+        });
+
+        Gate::define('view-application', function(User $user) {
+            return empty(! $user->roles)
+                ?   ( $user->roles->contains("verifing")
+                    ? Response::allow()
+                    : Response::deny()
+                    )
                 : Response::deny();
-         });
+        });
 
         /**
          * Order policies
@@ -60,7 +69,10 @@ class AuthServiceProvider extends ServiceProvider
                             )
                         : Response::deny()
                         )
-                    :   Response::allow();
+                    :   ( Gate::check('create-order')
+                        ? Response::allow()
+                        : Response::deny()
+                        );
         });
 
         Gate::define('create-full-order', function(User $user) {

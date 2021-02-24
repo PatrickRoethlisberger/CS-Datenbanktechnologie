@@ -59,6 +59,28 @@
                                  @endforeach
                             </div>
                         </div>
+                        @can('create-application')
+                            <div class="mt-4">
+                                <h2 class="text-xl font-bold leading-none text-left lg:text-3xl">Jetzt bewerben</h2>
+                                <p>Um ein Abonoment lösen zu können, müssen Sie sich erst bewerben. <br>
+                                Nach dem erhalt des unterschriebenen Vertrages und erfolgreicher Bonitätsprüfung
+                                erhalten Sie besuch von einem unserer Mitarbeiter, welcher Ihnen auch für
+                                Fragen zur Verfügung steht.</p>
+                                <form action="{{ route('checks.store') }}" method="post" class="mt-2">
+                                    @csrf
+                                    <x-button>Jetzt bewerben</x-button>
+                                </form>
+                            </div>
+                        @endcan
+                        @can('view-application')
+                                <h2 class="text-xl font-bold leading-none text-left lg:text-3xl">Bewerbungsstand</h2>
+                                <div class="px-4 py-6 mx-auto lg:px-6 lg:w-1/3 md:w-full">
+                                    <div class="h-full px-4 py-6 border rounded-xl">
+                                        <h4 class="flex items-center justify-start mt-2 mb-4 text-3xl font-bold leading-none text-left text-blue-800 lg:text-4xl">{{ collect(Auth::user()->checks->firstWhere('approved', false))->get('name')}}</h3>
+                                        <p class="mb-4 text-base leading-relaxed">{{ collect(Auth::user()->checks->firstWhere('approved', false))->get('description')}}</p>
+                                    </div>
+                                </div>
+                        @endcan
                     </section>
                 </div>
             </div>
