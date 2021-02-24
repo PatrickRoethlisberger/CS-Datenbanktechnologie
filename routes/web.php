@@ -26,10 +26,12 @@ Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 
 // Authenticated and verified routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/orders', OrderController::class)->only(['index','store']);
-    Route::get('/orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
-    Route::resource('/locations', LocationController::class)->only(['index','store','create']);
+    Route::post('checks', [PlanController::class, 'apply'])->name('checks.store');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('orders', OrderController::class)->only(['index','store']);
+    Route::get('orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
+    Route::resource('locations', LocationController::class)->only(['index','store','create']);
+
 });
 
 require __DIR__.'/auth.php';
