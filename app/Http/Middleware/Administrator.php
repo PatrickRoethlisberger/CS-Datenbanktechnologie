@@ -16,7 +16,7 @@ class Administrator
      */
     public function handle(Request $request, Closure $next)
     {
-        if ( ! $request->user() || ! empty($request->user()->roles) || ! $request->user()->roles->contains("validated")) {
+        if ( ! $request->user() || empty($request->user()->roles) || ! $request->user()->roles->contains("admin")) {
             return abort(403, 'FORBIDDEN - keine Admin Rechte');
         }
 
