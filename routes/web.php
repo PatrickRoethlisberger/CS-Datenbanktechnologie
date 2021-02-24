@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/plans', [PlanController::class, 'index'])->name('plans');
+Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 
 // Authenticated and verified routes
 Route::group(['middleware' => ['auth', 'verified']], function () {

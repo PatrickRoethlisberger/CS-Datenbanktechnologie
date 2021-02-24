@@ -22,7 +22,7 @@ class OrderController extends Controller
                 'orders' => Auth::user()->orders()->paginate(5),
             ]);
         } else {
-            return redirect(route('plans'));
+            return redirect(route('plans.index'));
         }
 
     }
@@ -56,7 +56,7 @@ class OrderController extends Controller
                 'fromDate' => $fromDate,
             ]);
         } else {
-            return redirect(route('plans'));
+            return redirect(route('plans.index'));
         }
     }
 
