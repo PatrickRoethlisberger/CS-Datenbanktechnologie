@@ -17,7 +17,7 @@
                             Dashboard
                         </x-nav-link>
                     @endauth
-                    <x-nav-link :href="route('plans')" :active="request()->routeIs('plans')">
+                    <x-nav-link :href="route('plans.index')" :active="request()->routeIs('plans')">
                         Abos
                     </x-nav-link>
                     @auth
@@ -92,7 +92,7 @@
                     Dashboard
                 </x-responsive-nav-link>
             @endauth
-            <x-responsive-nav-link :href="route('plans')" :active="request()->routeIs('plans')">
+            <x-responsive-nav-link :href="route('plans.index')" :active="request()->routeIs('plans')">
                 Abos
             </x-responsive-nav-link>
             @auth
