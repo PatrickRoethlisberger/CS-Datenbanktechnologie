@@ -15,7 +15,7 @@ class Location extends Model
 
     public function provider()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'provider_user_id');
     }
 
     public function occupations()
