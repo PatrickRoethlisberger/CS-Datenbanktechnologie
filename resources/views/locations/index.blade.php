@@ -39,9 +39,9 @@
                                             <td class="px-4 py-4">{{ $location->plz }}</td>
                                             <td class="px-4 py-4">{{ $location->city }}</td>
                                             <td class="px-4 py-4">
-                                                {{-- <x-button-link class="mt-4" :href="route('occupations.offer.create', $location)">
+                                                <x-button-link class="mt-4" :href="route('locations.show', $location)">
                                                     zur Verfügung stellen
-                                                </x-button-link> --}}
+                                                </x-button-link>
                                             </td>
                                         </tr>
                                     @endforeach

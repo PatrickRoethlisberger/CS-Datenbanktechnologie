@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChecksController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\LocationOccupationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlanController;
 use App\Models\Plan;
@@ -31,7 +32,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('orders', OrderController::class)->only(['index','store']);
     Route::get('orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
-    Route::resource('locations', LocationController::class)->only(['index','store','create']);
+    Route::resource('locations', LocationController::class)->only(['index','store','create', 'show']);
+    Route::get('locations/{location}/occupations/{date}', [LocationOccupationController::class, 'create'])->name('locations.occupations.create');
+    Route::post('locations/{location}/occupations/{date}', [LocationOccupationController::class, 'store'])->name('locations.occupations.store');
+    Route::delete('locations/{location}/occupations/{date}', [LocationOccupationController::class, 'destroy'])->name('locations.occupations.destroy');
 
     Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::resource('checks', ChecksController::class)->only(['index','update']);

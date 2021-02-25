@@ -103,6 +103,5 @@ class OrderController extends Controller
             ->withErrors('Ein Fehler ist Aufgetreten.');
         }
 
-
     }
 }
