@@ -61,9 +61,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->orders()->where('from', '<=', now())->where('until', '>=', now())->orderby('until', 'desc')->first();
     }
 
-    public function plan()
+    public function order($date)
     {
-        return $this->hasOneThrough(Plan::class, Order::class, 'user_id', 'id', 'current_order_id', 'plan_id');
+        return $this->orders()->where('from', '<=', $date)->where('until', '>=', $date)->orderby('until', 'desc')->first();
     }
 
     public function locations()
