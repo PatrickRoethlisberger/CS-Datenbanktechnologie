@@ -53,7 +53,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('create-order', function(User $user) {
             return empty(! $user->roles)
-                ?   ( $user->roles->contains("validated")
+                ?   ( $user->roles->contains("verified")
                     ? Response::allow()
                     : Response::deny()
                     )
@@ -84,6 +84,23 @@ class AuthServiceProvider extends ServiceProvider
                         : Response::deny()
                         // ToDo: Check for Audits
                         )
+                    )
+                : Response::deny();
+        });
+
+        /**
+         * Occupation policies
+         */
+
+        Gate::define('create-occupation', function(User $user, $date) {
+            $date = Carbon::parse($date);
+            $order = $user->order($date);
+            $plan = $order->plan()->first();
+            $occupations = $user->occupations()->where('date', '>=', $date->copy()->startOfWeek())->where('date', '<=', $date->copy()->endOfWeek())->get();
+            return $order
+                ?   ( count($occupations) < $plan->lots
+                    ? Response::allow()
+                    : Response::deny()
                     )
                 : Response::deny();
         });
