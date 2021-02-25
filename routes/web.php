@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ChecksController;
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LocationOccupationController;
@@ -29,7 +29,7 @@ Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 
 // Authenticated and verified routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::post('checks', [ChecksController::class, 'store'])->name('checks.store');
+    Route::post('checks', [CheckController::class, 'store'])->name('checks.store');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('orders', OrderController::class)->only(['index','store']);
     Route::get('orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('occupations', OccupationController::class)->only(['index','create', 'edit', 'update', 'destroy']);
 
     Route::middleware(['admin'])->prefix('admin')->group(function () {
-        Route::resource('checks', ChecksController::class)->only(['index','update']);
+        Route::resource('checks', CheckController::class)->only(['index','update']);
     });
 });
 
