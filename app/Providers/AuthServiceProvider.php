@@ -95,7 +95,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-occupation', function(User $user, $date) {
             $date = Carbon::parse($date);
             $order = $user->order($date);
-            $plan = $order->plan()->first();
+            $order ? $plan = $order->plan()->first() : '';
             $occupations = $user->occupations()->where('date', '>=', $date->copy()->startOfWeek())->where('date', '<=', $date->copy()->endOfWeek())->get();
             return $order
                 ?   ( count($occupations) < $plan->lots
