@@ -4,6 +4,7 @@ use App\Http\Controllers\ChecksController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LocationOccupationController;
+use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlanController;
 use App\Models\Plan;
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('locations/{location}/occupations/{date}', [LocationOccupationController::class, 'create'])->name('locations.occupations.create');
     Route::post('locations/{location}/occupations/{date}', [LocationOccupationController::class, 'store'])->name('locations.occupations.store');
     Route::delete('locations/{location}/occupations/{date}', [LocationOccupationController::class, 'destroy'])->name('locations.occupations.destroy');
+    Route::resource('occupations', OccupationController::class)->only(['index','create', 'edit', 'update', 'destroy']);
 
     Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::resource('checks', ChecksController::class)->only(['index','update']);
