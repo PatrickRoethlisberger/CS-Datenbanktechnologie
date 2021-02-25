@@ -53,7 +53,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('has-order', function(User $user) {
             return $user->currentOrder()
-                ?   ( $user->currentOrder()->plan()->get()->lots
+                ?   ( $user->currentOrder()->plan()->first()->lots
                     ? Response::allow()
                     : Response::deny()
                     )
@@ -108,6 +108,19 @@ class AuthServiceProvider extends ServiceProvider
             $occupations = $user->occupations()->where('date', '>=', $date->copy()->startOfWeek())->where('date', '<=', $date->copy()->endOfWeek())->get();
             return $order
                 ?   ( count($occupations) < $plan->lots
+                    ? Response::allow()
+                    : Response::deny()
+                    )
+                : Response::deny();
+        });
+
+        /**
+         * User policies
+         */
+
+        Gate::define('be-admin', function(User $user) {
+            return empty(! $user->roles)
+                ?   ( $user->roles->contains("admin")
                     ? Response::allow()
                     : Response::deny()
                     )
