@@ -51,6 +51,15 @@ class AuthServiceProvider extends ServiceProvider
          * Order policies
          */
 
+        Gate::define('has-order', function(User $user) {
+            return $user->currentOrder()
+                ?   ( $user->currentOrder()->plan()->get()->lots
+                    ? Response::allow()
+                    : Response::deny()
+                    )
+                : Response::deny();
+        });
+
         Gate::define('create-order', function(User $user) {
             return empty(! $user->roles)
                 ?   ( $user->roles->contains("verified")
