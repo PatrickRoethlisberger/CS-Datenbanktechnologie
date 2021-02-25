@@ -47,7 +47,7 @@ class PlanSeeder extends Seeder
                 'description' => 'Drei Standplätze, welche halbjährlich bezahlt werden',
                 'price' => 1299,
                 'duration' => 6,
-                'lots' => 1,
+                'lots' => 3,
                 'isInitialPlan' => false,
                 'isTerminatingPlan' => false,
             ],
