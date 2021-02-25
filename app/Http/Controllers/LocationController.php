@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Acaronlex\LaravelCalendar\Calendar;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,40 +67,59 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+       $occupations = $location->occupations()->get();
+
+       $events = [];
+
+
+       foreach ($occupations as $occupation) {
+            if ($occupation->user_id) {
+                $backgroundcolor = '#F87171';
+            } elseif ($occupation->date <= now()) {
+                $backgroundcolor = '#FEE2E2';
+            } else {
+                $backgroundcolor = '#34D399';
+            }
+
+            $events[] = \Calendar::event(
+                '', //event title
+                true, //full day event?
+                $occupation->date, //start time (you can also use Carbon instead of DateTime)
+                $occupation->date, //end time (you can also use Carbon instead of DateTime)
+                0, //optionally, you can specify an event ID
+                [
+                    'display' => 'background',
+                    'backgroundColor' => $backgroundcolor,
+                ]
+            );
+       }
+
+
+        $calendar = new Calendar();
+                $calendar->addEvents($events)
+                ->setOptions([
+                    'locale' => 'de',
+                    'firstDay' => 1,
+                    'hiddenDays' => [0],
+                    'displayEventTime' => false,
+                    'selectable' => false,
+                    'initialView' => 'dayGridMonth',
+                    'headerToolbar' => [
+                        'end' => 'prev,next'
+                    ]
+                ]);
+                $calendar->setId('1');
+                $calendar->setCallbacks([
+                    'dateClick' => "function(info){
+                        window.location.href = ('/locations/{$location->id}/occupations/' + info.dateStr);
+                    }",
+                ]);
+
+        return view('locations.show', [
+            'location' => $location,
+            'occupations' => $occupations,
+            'calendar' => $calendar,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Location $location)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Location $location)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Location $location)
-    {
-        //
-    }
 }
