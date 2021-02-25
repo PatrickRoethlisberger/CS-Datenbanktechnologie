@@ -43,7 +43,12 @@ class ChecksController extends Controller
                 ['name' =>  '3/3 Besuch', 'description' =>  'Ein Mitarbeiter kontaktiert Sie um einen Termin für einen persöhnlichen Besuch zu vereinbaren.', 'approved' => false],
             ]);
 
-            $roles = Auth::user()->roles->push('verifing');
+            if(Auth::user()->roles == null){
+                $roles = new Collection(['verifing']);
+            } else{
+                $roles = Auth::user()->roles->push('verifing');
+            }
+
 
             Auth::user()->update([
                 'checks' => $checks,
