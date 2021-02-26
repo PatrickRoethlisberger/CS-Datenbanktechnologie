@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\ChecksController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LocationOccupationController;
 use App\Http\Controllers\OccupationController;

@@ -95,8 +95,8 @@
             <p>Aktuell ist es nicht möglich ein Abo abzuschliessen.</p>
             <p class="mt-4"> Falls Sie noch in der Bewerbungsphase sind, können Sie am letzen Tag des Abonoments das Abonoment erneuern</p>
             <div class="flex justify-end mt-4">
-                <x-button-link :href="route('dashboard')">
-                    Zurück zum Dashboard
+                <x-button-link :href="route('plans.index')">
+                    Zurück zum den Angeboten
                 </x-button-link>
             </div>
         @endif
