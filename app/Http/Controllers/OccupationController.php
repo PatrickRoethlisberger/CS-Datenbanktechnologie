@@ -18,7 +18,9 @@ class OccupationController extends Controller
      */
     public function index()
     {
-
+        return view('occupations.index', [
+            'occupations' => Auth::user()->occupations()->paginate(5),
+        ]);
     }
 
     /**
@@ -121,6 +123,13 @@ class OccupationController extends Controller
      */
     public function destroy(Occupation $occupation)
     {
-        //
+        if (Auth::user()->id == $occupation->user_id ) {
+            $occupation->update(['user_id' => null]);
+            return redirect(route('occupations.index'));
+        }
+        else {
+            return redirect(route('occupations.edit', $occupation))
+            ->withErrors('Sie sind nicht der Mieter dieses Standortes.');
+        }
     }
 }
