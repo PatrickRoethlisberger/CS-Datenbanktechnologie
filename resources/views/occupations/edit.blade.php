@@ -20,7 +20,7 @@
             </div>
         @else
             @can('create-occupation', $occupation->date)
-                @if (! $occupation->date > \Carbon\Carbon::now())
+                @if (\Carbon\Carbon::parse($occupation->date) < \Carbon\Carbon::today())
                     <h2 class="text-xl font-bold leading-none text-left lg:text-3xl">Datum in der Vergangenheit</h2>
                     <p class="mt-4">Es ist nur möglich die Verfügarbeit einen Standort in der Zukunft zu reservieren - Zeitmaschinen wurden leider noch nicht erfunden 😉</p>
                     <div class="flex items-center justify-end mt-4">
