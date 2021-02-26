@@ -20,6 +20,23 @@ class AuditController extends Controller
      */
     public function index()
     {
+
+        $auditors = User::withCount('audited')->get()->where('audited_count', '>', 0);
+
+        return view('audits.index', [
+            'audits' => Audit::paginate(5),
+            'auditors' => $auditors,
+        ]);
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         $events = [];
 
         $toAudit = collect();
@@ -65,24 +82,9 @@ class AuditController extends Controller
                      }",
                  ]);
 
-         return view('audits.index', [
+         return view('audits.create', [
              'calendar' => $calendar,
          ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(User $user)
-    {
-        $occupation = $user->nextOccupation();
-
-        return view('audits.create', [
-            'user' => $user,
-            'occupation' => $occupation,
-        ]);
     }
 
     /**
@@ -110,9 +112,9 @@ class AuditController extends Controller
                     'until' => Carbon::today()->copy()->addMonths(3),
                 ]);
             }
-            return redirect(route('audits.index'));
+            return redirect(route('audits.create'));
         } else {
-            return redirect(route('audits.create', $user))
+            return redirect(route('audits.show', $user))
             ->withErrors('Es kann nur ein Audit an einem Tag durchgeführt werden, wo der Marktfaher einen Stand hat.');
         }
 
@@ -126,9 +128,16 @@ class AuditController extends Controller
      * @param  \App\Models\Audit  $audit
      * @return \Illuminate\Http\Response
      */
-    public function show(Audit $audit)
+    public function show(User $user)
     {
-        //
+        $occupation = $user->nextOccupation();
+        $location = $occupation->location()->first();
+
+        return view('audits.show', [
+            'user' => $user,
+            'occupation' => $occupation,
+            'location' => $location,
+        ]);
     }
 
     /**

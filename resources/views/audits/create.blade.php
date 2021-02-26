@@ -1,23 +1,20 @@
-<x-modal-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo-small class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-app-callendar-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Audits bearbeiten
+        </h2>
+    </x-slot>
 
-        <!-- Validation Errors -->
-        <x-validation-errors class="mb-4" :errors="$errors" />
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white blocation-b blocation-gray-200">
 
-        <div class="flex items-center justify-between mt-4">
-        <form action="{{ route('audits.store', [$user, '1']) }}" method="post" class="mr-1">
-            @csrf
-            <x-button class="ml-4">Bestanden</x-button>
-        </form>
-        <form action="{{ route('audits.store', [$user, '0']) }}" method="post" class="mr-1">
-            @csrf
-            <x-button class="ml-4 bg-red-400">Nicht Bestanden</x-button>
-        </form>
+                    {!! $calendar->calendar() !!}
+                    {!! $calendar->script() !!}
+
+                </div>
+            </div>
         </div>
-    </x-auth-card>
-</x-modal-layout>
+    </div>
+</x-app-layout>
