@@ -76,6 +76,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Occupation::class);
     }
 
+    public function nextOccupation()
+    {
+        return $this->occupations()->where('date', '>=', now())->orderby('date', 'asc')->first();
+    }
+
     public function audits()
     {
         return $this->hasMany(Audit::class, 'client_user_id', 'id');

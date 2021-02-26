@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
@@ -41,6 +42,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::resource('checks', CheckController::class)->only(['index','update']);
+        Route::resource('audits', AuditController::class)->only(['index','update']);
+        Route::get('audits/create/{user}', [AuditController::class, 'create'])->name('audits.create');
+        Route::post('audits/{user}/{bool}', [AuditController::class, 'store'])->name('audits.store');
     });
 });
 

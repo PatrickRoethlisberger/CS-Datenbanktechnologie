@@ -16,10 +16,9 @@ class CreateAuditsTable extends Migration
         Schema::create('audits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_user_id')->constrained('users');
-            $table->foreignId('auditor_user_id')->nullable()->constrained('users');
+            $table->foreignId('auditor_user_id')->constrained('users');
             $table->date('date');
-            $table->jsonb('criteria')->nullable();
-            $table->float('grade')->nullable();
+            $table->bool('approved');
             $table->timestamps();
         });
     }

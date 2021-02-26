@@ -17,13 +17,26 @@
                             Dashboard
                         </x-nav-link>
                     @endauth
-                    <x-nav-link :href="route('plans.index')" :active="request()->routeIs('plans')">
+                    <x-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
                         Abos
                     </x-nav-link>
                     @auth
                         <x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
                             Standorte
                         </x-nav-link>
+                        @can('has-order')
+                            <x-nav-link :href="route('occupations.index')" :active="request()->routeIs('occupations.index')">
+                                Reservationen
+                            </x-nav-link>
+                        @endcan
+                        @can('be-admin')
+                            <x-nav-link :href="route('checks.index')" :active="request()->routeIs('checks.index')">
+                                Bewerbungen
+                            </x-nav-link>
+                            <x-nav-link :href="route('audits.index')" :active="request()->routeIs('audits.index')">
+                                Audits
+                            </x-nav-link>
+                        @endcan
                     @endauth
                 </div>
             </div>
@@ -92,13 +105,26 @@
                     Dashboard
                 </x-responsive-nav-link>
             @endauth
-            <x-responsive-nav-link :href="route('plans.index')" :active="request()->routeIs('plans')">
+            <x-responsive-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
                 Abos
             </x-responsive-nav-link>
             @auth
                 <x-responsive-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
                     Standorte
                 </x-responsive-nav-link>
+                @can('has-order')
+                    <x-responsive-nav-link :href="route('occupations.index')" :active="request()->routeIs('occupations.index')">
+                        Reservationen
+                    </x-responsive-nav-link>
+                @endcan
+                @can('be-admin')
+                    <x-responsive-nav-link :href="route('checks.index')" :active="request()->routeIs('checks.index')">
+                        Bewerbungen
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('audits.index')" :active="request()->routeIs('audits.index')">
+                        Audits
+                    </x-responsive-nav-link>
+                @endcan
             @endauth
         </div>
 
