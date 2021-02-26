@@ -18,7 +18,7 @@ class CreateAuditsTable extends Migration
             $table->foreignId('client_user_id')->constrained('users');
             $table->foreignId('auditor_user_id')->constrained('users');
             $table->date('date');
-            $table->bool('approved');
+            $table->boolean('approved');
             $table->timestamps();
         });
     }
