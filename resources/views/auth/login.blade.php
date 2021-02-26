@@ -24,7 +24,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Passwort')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -43,7 +43,7 @@
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('Passwort vergessen?') }}
                     </a>
                 @endif
 
