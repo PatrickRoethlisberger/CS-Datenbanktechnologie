@@ -114,12 +114,9 @@ class AuditController extends Controller
             }
             return redirect(route('audits.create'));
         } else {
-            return redirect(route('audits.show', $user))
+            return redirect(route('audits.edit', $user))
             ->withErrors('Es kann nur ein Audit an einem Tag durchgeführt werden, wo der Marktfaher einen Stand hat.');
         }
-
-
-
     }
 
     /**
@@ -130,14 +127,10 @@ class AuditController extends Controller
      */
     public function show(User $user)
     {
-        $occupation = $user->nextOccupation();
-        $location = $occupation->location()->first();
-
         return view('audits.show', [
-            'user' => $user,
-            'occupation' => $occupation,
-            'location' => $location,
+            'audits' => $user->audited()->with('client')->paginate(5),
         ]);
+
     }
 
     /**
@@ -146,9 +139,16 @@ class AuditController extends Controller
      * @param  \App\Models\Audit  $audit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Audit $audit)
+    public function edit(User $user)
     {
-        //
+        $occupation = $user->nextOccupation();
+        $location = $occupation->location()->first();
+
+        return view('audits.edit', [
+            'user' => $user,
+            'occupation' => $occupation,
+            'location' => $location,
+        ]);
     }
 
     /**

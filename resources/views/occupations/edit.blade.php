@@ -57,7 +57,5 @@
                 </div>
             @endcan
         @endif
-
-
     </x-auth-card>
 </x-modal-layout>

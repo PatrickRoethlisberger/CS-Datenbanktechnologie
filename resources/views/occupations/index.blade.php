@@ -12,7 +12,7 @@
                     @if ($occupations->count())
                         <div class="flex items-center justify-end mt-4">
                             <x-button-link class="mt-4" :href="route('occupations.create')">
-                                Weitere Standorte erstellen
+                                Standort jetzt reservieren
                             </x-button-link>
                         </div>
                         <div class="overflow-x-auto mt-6">
@@ -49,9 +49,9 @@
                         </div>
                     {{ $occupations->links() }}
                     @else
-                    <p>Bis jetzt wurden noch Standorte hinzugefügt</p>
+                    <p>Bis jetzt wurden noch keine Standorte reserviert</p>
                     <x-button-link class="mt-4" :href="route('occupations.create')">
-                        Jetzt Standort erstellen
+                        Jetzt Reservation erstellen
                     </x-button-link>
                     @endif
 

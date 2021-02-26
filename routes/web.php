@@ -39,8 +39,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::resource('checks', ChecksController::class)->only(['index','update']);
-        Route::resource('audits', AuditController::class)->only(['index','create','update']);
-        Route::get('audits/create/{user}', [AuditController::class, 'show'])->name('audits.show');
+        Route::resource('audits', AuditController::class)->only(['index','create']);
+        Route::get('audits/{user}', [AuditController::class, 'show'])->name('audits.show');
+        Route::get('audits/create/{user}', [AuditController::class, 'edit'])->name('audits.edit');
         Route::post('audits/{user}/{bool}', [AuditController::class, 'store'])->name('audits.store');
     });
 });

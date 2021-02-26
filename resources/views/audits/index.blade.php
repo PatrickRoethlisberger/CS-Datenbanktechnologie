@@ -51,6 +51,7 @@
                                     <tr class="rounded-lg text-sm font-medium text-gray-700 text-left">
                                         <th class="px-4 py-2 bg-gray-50 "">Auditor</th>
                                         <th class="px-4 py-2 bg-gray-50">Anzahl Audits</th>
+                                        <th class="px-4 py-2 bg-gray-50"></th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-sm font-normal text-gray-700">
@@ -58,6 +59,11 @@
                                         <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
                                             <td class="px-4 py-4">{{ $auditor->name }}</td>
                                             <td class="px-4 py-4">{{ $auditor->audited_count }}</td>
+                                            <td class="px-4 py-4">
+                                                <x-button-link class="mt-4" :href="route('audits.show', $auditor)">
+                                                    Details
+                                                </x-button-link>
+                                            </td>
                                         </tr>
                                     @endforeach
 
