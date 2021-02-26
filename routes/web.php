@@ -31,7 +31,6 @@ Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 // Authenticated and verified routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('checks', [ChecksController::class, 'store'])->name('checks.store');
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('orders', OrderController::class)->only(['index','store']);
     Route::get('orders/create/{plan}', [OrderController::class, 'create'])->name('orders.create');
     Route::resource('locations', LocationController::class)->only(['index','store','create', 'show']);
