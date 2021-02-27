@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -78,7 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function nextOccupation()
     {
-        return $this->occupations()->where('date', '>=', now())->orderby('date', 'asc')->first();
+        return $this->occupations()->where('date', '>=', Carbon::today())->orderby('date', 'asc')->first();
     }
 
     public function audits()
