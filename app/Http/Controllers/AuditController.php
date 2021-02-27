@@ -52,13 +52,15 @@ class AuditController extends Controller
         }
 
         foreach ($toAudit as $user) {
-             $events[] = \Calendar::event(
-                "{$user->name}",
-                true,
-                $user->nextOccupation()->date,
-                $user->nextOccupation()->date,
-                $user->id,
-             );
+            if($user->nextOccupation()) {
+                $events[] = \Calendar::event(
+                    "{$user->name}",
+                    true,
+                    $user->nextOccupation()->date,
+                    $user->nextOccupation()->date,
+                    $user->id,
+                );
+            }
         }
 
          $calendar = new Calendar();
