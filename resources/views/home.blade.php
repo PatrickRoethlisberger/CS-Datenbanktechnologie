@@ -171,7 +171,7 @@
                 <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <h3 class="my-4 text-3xl leading-tight">
-                Profitieren Sie jetzt von den unzähligen Vorteile von wuchemarkt.ch
+                Profitieren Sie jetzt von den unzähligen Vorteilen von wuchemarkt.ch
             </h3>
             <a href="{{route('register')}}">
                 <button
